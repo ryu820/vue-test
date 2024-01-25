@@ -6,7 +6,7 @@
         <div :key="i" v-for="(tab, i) in tabList">
           <v-tab :to="tab.tab_link"> {{ tab.tab_name }} </v-tab>
         </div>
-        <v-btn to="/login"> Button </v-btn>
+        <v-btn to="/login" :width="100"> LogIn </v-btn>
       </div>
     </v-tabs>
 

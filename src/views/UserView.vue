@@ -30,8 +30,7 @@
         prepend-inner-icon="mdi-lock"
         @click:append-inner="visible = !visible"
       ></v-text-field>
-      <br />
-      <v-btn color="blue" size="large" variant="outlined" density="default" justify="center">
+      <v-btn block class="mb-5" color="blue" size="large" variant="outlined" >
         Log In
       </v-btn>
     </v-card>
