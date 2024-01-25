@@ -25,12 +25,14 @@
       <v-text-field
         :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
         :type="visible ? 'text' : 'password'"
+        :rules="rules"
         density="default"
         placeholder="Password"
         prepend-inner-icon="mdi-lock"
         @click:append-inner="visible = !visible"
       ></v-text-field>
-      <v-btn block class="mb-5" color="blue" size="large" variant="outlined" >
+      <br>
+      <v-btn block class="mb-3" color="blue" size="large" variant="outlined" height="50px">
         Log In
       </v-btn>
     </v-card>
@@ -42,6 +44,9 @@ export default {
   data() {
     return {
       visible: false,
+      rules: [
+        value => (value && value.length <= 20) || 'Nope' //여기에 글자 제한 로직 넣으면 될듯
+      ],
     };
   },
   setup() {},
