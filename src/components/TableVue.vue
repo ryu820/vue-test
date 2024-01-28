@@ -1,5 +1,5 @@
 <template>
-  <v-card flat >
+  <v-card flat class="tableCard">
     <template v-slot:text>
       <v-text-field
         v-model="search"
@@ -15,6 +15,7 @@
       :headers="headers"
       :items="desserts"
       :search="search"
+      :items-per-page="10"
     ></v-data-table>
   </v-card>
 </template>
@@ -32,3 +33,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.tableCard {
+  margin: 40px;
+}
+</style>
