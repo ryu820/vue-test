@@ -1,13 +1,20 @@
 <template>
   <v-col cols="6" sm="3">
-      <v-text-field
-        v-model="dateRangeText"
-        label="Date range"
-        prepend-icon="mdi-calendar"
-        readonly
-      ></v-text-field>
-      {{ dates }}
-      <v-date-picker v-model="dates" range></v-date-picker>
+    <v-text-field
+      v-model="dateRangeText"
+      label="Date range"
+      prepend-icon="mdi-calendar"
+      readonly
+    ></v-text-field>
+    {{ dates }}
+    <v-date-picker
+      v-model="dates"
+      locale="ko"
+      is-range
+      mode="date"
+      class="datetime-picker"
+      is24hr
+    ></v-date-picker>
   </v-col>
 </template>
 
