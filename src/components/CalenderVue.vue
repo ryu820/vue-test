@@ -8,12 +8,8 @@
         mode="date"
         class="datetime-picker"
         is24hr
-        :max-date="new Date()"
-        :columns="
-          $screens({
-            default: 1,
-          })
-        "
+
+        @click:date="handleDateClick"
       >
       </v-date-picker>
     </div>
@@ -35,6 +31,12 @@
     methods: {
     onClickOutside() {
       this.$emit('hideCalendar')
+    },
+    handleDateClick(date) {
+      // 날짜가 클릭되었을 때 호출되는 함수
+      // 선택된 날짜를 부모 컴포넌트로 전달
+      console.log(date)
+      this.$emit('dateSelected', date);
     },
   },
   }

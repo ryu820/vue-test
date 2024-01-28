@@ -1,19 +1,30 @@
 <template>
   <h1>여기는 전체조회다</h1>
-  <SearchWindow/>
+  <SearchWindow />
 </template>
 
 <script>
-import { defineComponent } from 'vue';
 
 // Components
-import SearchWindow from '@/components/SearchWindow.vue';
+import SearchWindow from "@/components/SearchWindow.vue";
 
-export default defineComponent({
-  name: 'HomeView',
+export default ({
+  name: "HomeView",
 
   components: {
-    SearchWindow
+    SearchWindow,
   },
 });
 </script>
+<style>
+.main {
+  margin: 50px auto;
+  background-color: rgb(18, 220, 62);
+  width: 300px;
+  display: flex;
+  gap: 5%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

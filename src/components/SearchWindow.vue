@@ -1,71 +1,34 @@
 <template>
-  <div class="daycard">
-    <v-card variant="outlined">
-      <b-button-group class="mx-1">
-        <b-button @click="showCalendar" class="btn-cal" variant="transparent">
-          {{ startDate }}
-        </b-button>
-        <b-button :disabled="true" variant="transparent" class="mx-2"
-          >~</b-button
-        >
-        <b-button @click="showCalendar" class="btn-cal" variant="transparent">
-          {{ endDate }}
-        </b-button>
-      </b-button-group>
-    </v-card>
-    <CalenderVue v-if="calendarFlag" @hideCalendar="hideCalendar" :range="range" />
-
-
-    <v-btn variant="tonal" density="compact"> 조회 </v-btn>
-  </div>
+  <v-col cols="6" sm="3">
+      <v-text-field
+        v-model="dateRangeText"
+        label="Date range"
+        prepend-icon="mdi-calendar"
+        readonly
+      ></v-text-field>
+      {{ dates }}
+      <v-date-picker v-model="dates" range></v-date-picker>
+  </v-col>
 </template>
+
 <script>
-import dayjs from "dayjs";
-import CalenderVue from '../components/CalenderVue.vue'
 export default {
-  name: "SearchWindow",
-  layout: "default",
-  components: {
-    CalenderVue,
-  },
   data() {
     return {
-      calendarFlag: false,
-      range: {
-        start: dayjs().format("YYYY-MM-DD"),
-        end: dayjs().format("YYYY-MM-DD"),
-      },
+      dates: [new Date(), new Date()], // 두 개의 날짜 선택하도록 수정
     };
   },
   computed: {
-    startDate() {
-      return this.range.start;
-    },
-    endDate() {
-      return this.range.end;
-    },
-  },
-  setup() {},
-  created() {},
-  mounted() {},
-  unmounted() {},
-  methods: {
-    showCalendar() {
-      this.calendarFlag = true;
-    },
-    hideCalendar() {
-      if (this.calendarFlag) this.calendarFlag = false;
+    dateRangeText() {
+      const startDate = this.dates[0]
+        ? this.dates[0].toISOString().split("T")[0]
+        : "";
+      const endDate = this.dates[1]
+        ? this.dates[1].toISOString().split("T")[0]
+        : "";
+      return startDate && endDate ? startDate + " ~ " + endDate : "";
     },
   },
+  methods: {},
 };
 </script>
-<style>
-.daycard {
-  width: 300px;
-  display: flex;
-  gap: 5%;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-</style>
