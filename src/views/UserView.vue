@@ -17,7 +17,11 @@
       <v-text-field
         density="default"
         placeholder="ID"
+        :rules="rules"
+        required
+        hide-details
         prepend-inner-icon="mdi-account"
+        maxlength="50"
       ></v-text-field>
 
       <div class="text-subtitle-1 text-medium-emphasis">Password</div>
@@ -26,13 +30,23 @@
         :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
         :type="visible ? 'text' : 'password'"
         :rules="rules"
+        required
+        hide-details
         density="default"
         placeholder="Password"
         prepend-inner-icon="mdi-lock"
         @click:append-inner="visible = !visible"
+        maxlength="50"
       ></v-text-field>
-      <br>
-      <v-btn block class="mb-3" color="blue" size="large" variant="outlined" height="50px">
+      <br />
+      <v-btn
+        block
+        class="mb-3"
+        color="blue"
+        size="large"
+        variant="outlined"
+        height="50px"
+      >
         Log In
       </v-btn>
     </v-card>
@@ -45,7 +59,10 @@ export default {
     return {
       visible: false,
       rules: [
-        value => (value && value.length <= 20) || 'Nope' //여기에 글자 제한 로직 넣으면 될듯
+        (value) => {
+          if (value) return true;
+          return "You must enter something";
+        },
       ],
     };
   },
