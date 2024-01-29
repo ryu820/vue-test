@@ -1,6 +1,6 @@
 <template>
   <v-card flat class="tableCard">
-    <template v-slot:text>
+    <template v-slot:text >
       <v-text-field
         v-model="search"
         label="Search"
@@ -8,6 +8,7 @@
         single-line
         variant="outlined"
         hide-details
+        class="input"
       ></v-text-field>
     </template>
 
@@ -37,5 +38,10 @@ export default {
 <style>
 .tableCard {
   margin: 40px;
+}
+.input {
+  width: 500px;
+  float: right;
+  margin-bottom: 20px;
 }
 </style>
