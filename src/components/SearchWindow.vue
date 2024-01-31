@@ -1,13 +1,14 @@
 <template>
   <v-col cols="6" sm="3">
     <v-text-field
+      @click="showCalendar"
       v-model="dateRangeText"
       label="Date range"
       prepend-icon="mdi-calendar"
       readonly
     ></v-text-field>
   </v-col>
-  <v-row>
+  <v-row v-if="calendarFlag" >
     <v-locale-provider locale="KR">
       <v-date-picker
         v-model="dates[0]"
@@ -23,7 +24,7 @@
         hide-header
         mode="date"
         class="datetime-picker"
-        is24hr="false"
+        reactive
       ></v-date-picker>
     </v-locale-provider>
   </v-row>
@@ -34,6 +35,7 @@ import dayjs from "dayjs";
 export default {
   data() {
     return {
+      calendarFlag: false,
       dates: [new Date(), new Date()], // 두 개의 날짜 선택하도록 수정
     };
   },
@@ -48,7 +50,16 @@ export default {
       return startDate && endDate ? startDate + " ~ " + endDate : "";
     },
   },
-  methods: {},
+  methods: {
+    showCalendar() {
+      if (this.calendarFlag) {
+        this.calendarFlag = false;
+      } else {
+        this.calendarFlag = true;
+      }
+      
+    },
+  },
 };
 </script>
 <style></style>
