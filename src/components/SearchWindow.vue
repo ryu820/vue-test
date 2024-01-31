@@ -8,24 +8,24 @@
     ></v-text-field>
   </v-col>
   <v-row>
-    <v-date-picker
-      v-model="dates[0]"
-      locale="ko-KR"
-      mode="date"
-      class="datetime-picker"
-      is24hr="false"
-      weekday-format="getDay"
-      month-format="getMonth"
-
-    ></v-date-picker>
-    <v-date-picker
-      v-model="dates[1]"
-      locale="ko-KR"
-      no-title
-      mode="date"
-      class="datetime-picker"
-      is24hr="false"
-    ></v-date-picker>
+    <v-locale-provider locale="KR">
+      <v-date-picker
+        v-model="dates[0]"
+        locale="ko-KR"
+        mode="date"
+        hide-header
+        class="datetime-picker"
+        reactive
+      ></v-date-picker>
+      <v-date-picker
+        v-model="dates[1]"
+        locale="ko-KR"
+        hide-header
+        mode="date"
+        class="datetime-picker"
+        is24hr="false"
+      ></v-date-picker>
+    </v-locale-provider>
   </v-row>
 </template>
 
@@ -48,32 +48,7 @@ export default {
       return startDate && endDate ? startDate + " ~ " + endDate : "";
     },
   },
-  methods: {
-    getDay(date) {
-      const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
-      let i = new Date(date).getDay(date);
-      return daysOfWeek[i];
-    },
-    getMonth(date) {
-      const monthName = [
-        "1월",
-        "2월",
-        "3월",
-        "4월",
-        "5월",
-        "6월",
-        "7월",
-        "8월",
-        "9월",
-        "10월",
-        "11월",
-        "12월",
-      ];
-
-      let i = new Date(date).getMonth(date);
-      return monthName[i];
-    },
-  },
+  methods: {},
 };
 </script>
 <style></style>
