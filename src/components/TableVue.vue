@@ -1,23 +1,18 @@
 <template>
   <v-card flat class="tableCard">
-    <template v-slot:text >
-      <v-text-field
-        v-model="search"
-        label="Search"
-        prepend-inner-icon="mdi-magnify"
-        single-line
-        variant="outlined"
-        hide-details
-        class="input"
-      ></v-text-field>
-    </template>
-
     <v-data-table
+      v-model:page="page"
       :headers="headers"
       :items="desserts"
       :search="search"
       :items-per-page="10"
-    ></v-data-table>
+    >
+      <template v-slot:bottom>
+        <div class="text-center pt-2">
+          <v-pagination v-model="page" :length="pageCount"></v-pagination>
+        </div>
+      </template>
+    </v-data-table>
   </v-card>
 </template>
 
@@ -26,22 +21,22 @@ export default {
   props: {
     headers: Array,
     desserts: Array,
+    search: String,
   },
   data() {
     return {
-      search: "",
+      page: 1,
     };
+  },
+  computed: {
+    pageCount() {
+      return Math.ceil(this.desserts.length / 10);
+    },
   },
 };
 </script>
 
 <style>
-.tableCard {
-  margin: 40px;
-}
-.input {
-  width: 500px;
-  float: right;
-  margin-bottom: 20px;
-}
+
+
 </style>
