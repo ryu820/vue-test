@@ -2,7 +2,9 @@
   <div>
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" v-bind="props"> Activator slot </v-btn>
+        <v-btn class="calendarInput" prepend-icon="mdi-calendar" variant="outlined" size="x-large" v-bind="props">
+          {{ dateRangeText }}
+        </v-btn>
       </template>
       <v-card max-width="1000">
         <v-row>
@@ -54,7 +56,6 @@ export default {
   data() {
     return {
       search: "",
-      calendarFlag: false,
       dates: [new Date(), new Date()], // 두 개의 날짜 선택하도록 수정
     };
   },
