@@ -2,11 +2,18 @@
   <div>
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
-        <v-btn class="calendarInput" prepend-icon="mdi-calendar" variant="outlined" size="x-large" v-bind="props">
-          {{ dateRangeText }}
-        </v-btn>
+          <v-btn
+            class="calendarInput"
+            prepend-icon="mdi-calendar"
+            variant="outlined"
+            size="x-large"
+            v-bind="props"
+          >
+            {{ dateRangeText }}
+          </v-btn>
+          <v-btn variant="tonal" size="x-large"> 조회 </v-btn>
       </template>
-      <v-card max-width="1000">
+      <v-card>
         <v-row>
           <v-locale-provider locale="KR">
             <v-date-picker
@@ -27,15 +34,6 @@
         </v-row>
       </v-card>
     </v-menu>
-    <!-- <v-text-field
-      class="calendarInput"
-      @click="showCalendar"
-      v-model="dateRangeText"
-      label="Date range"
-      variant="outlined"
-      prepend-icon="mdi-calendar"
-      readonly
-    ></v-text-field> -->
 
     <v-text-field
       @input="inputEvent"
@@ -99,5 +97,6 @@ export default {
   width: 500px;
   float: left;
   margin-left: 7%;
+  margin-right: 15px;
 }
 </style>

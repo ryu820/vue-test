@@ -89,13 +89,14 @@ export default {
 <style>
 .main > h1 {
   margin-top: 5%;
+  margin-bottom: 3%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .tablecomp {
-  margin: 7%;
+  margin: 5% 7% 5% 7%;
   display: flex;
   flex-direction: column;
   justify-content: center;
