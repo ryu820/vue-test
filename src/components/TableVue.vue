@@ -50,7 +50,6 @@ export default {
       this.dialog = true;
     },
     closeDialog() {
-      // 모달이 닫힐 때 selectedDessert를 초기화합니다.
       this.selectedDessert = null;
       this.dialog = false;
     },
