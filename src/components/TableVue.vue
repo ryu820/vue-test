@@ -6,6 +6,7 @@
       :items="desserts"
       :search="search"
       :items-per-page="10"
+      @click:row="openModal"
     >
       <template v-slot:bottom>
         <div class="text-center pt-2">
@@ -13,11 +14,17 @@
         </div>
       </template>
     </v-data-table>
+    <ModalVue :dialog="dialog" :selectedDessert="selectedDessert" @closeDialog="closeDialog" />
   </v-card>
+  
 </template>
 
 <script>
+import ModalVue from './ModalVue.vue';
 export default {
+  components:{
+    ModalVue
+  },
   props: {
     headers: Array,
     desserts: Array,
@@ -26,6 +33,8 @@ export default {
   data() {
     return {
       page: 1,
+      dialog: false,
+      selectedDessert: null,
     };
   },
   computed: {
@@ -33,10 +42,19 @@ export default {
       return Math.ceil(this.desserts.length / 10);
     },
   },
+  methods: {
+    openModal(index,item) {
+      // const itemIndex = item.index
+      console.log(item.item)
+      this.selectedDessert = item.item;
+      this.dialog = true;
+    },
+    closeDialog() {
+      // 모달이 닫힐 때 selectedDessert를 초기화합니다.
+      this.selectedDessert = null;
+      this.dialog = false;
+    },
+  }
 };
 </script>
 
-<style>
-
-
-</style>
