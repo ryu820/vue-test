@@ -30,7 +30,7 @@ export default {
         tab_name: "Another Option",
       },
       {
-        tab_link: "/",
+        tab_link: "/option",
         tab_name: "Option1",
       },
       {

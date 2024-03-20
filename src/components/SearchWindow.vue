@@ -43,7 +43,7 @@
       prepend-inner-icon="mdi-magnify"
       variant="outlined"
       hide-details
-      class="input"
+      class="input1"
     ></v-text-field>
   </div>
 </template>
@@ -89,7 +89,7 @@ export default {
 };
 </script>
 <style>
-.input {
+.input1 {
   width: 500px;
   float: right;
   margin-right: 7%;
